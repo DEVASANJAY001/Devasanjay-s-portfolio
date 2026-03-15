@@ -158,43 +158,41 @@ export default function GitHub() {
   }
 
   return (
-    <section id="github" className="py-12 sm:py-16 lg:py-20">
+    <section id="github" className="py-24 sm:py-32 bg-transparent relative z-10">
       <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-12 sm:mb-16"
+          className="text-center mb-16 sm:mb-24"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-            GitHub Showcase
+          <h2 className="text-4xl sm:text-5xl lg:text-7xl font-black mb-6 bg-gradient-to-r from-white to-gray-500 bg-clip-text text-transparent uppercase tracking-tighter">
+            Open Source
           </h2>
-          <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto px-4">
-            Explore my open source contributions and projects on GitHub.
-          </p>
+          <div className="w-24 h-1 bg-white mx-auto rounded-full" />
         </motion.div>
 
         {/* GitHub Stats */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-16"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-16 sm:mb-24"
         >
           {githubStats.map((stat, index) => (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.05 }}
-              className="text-center bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-6 hover:bg-white/10 transition-all duration-300"
+              whileHover={{ y: -8 }}
+              className="glass p-8 rounded-[2rem] text-center border-white/5 transition-all duration-500 hover:bg-white/5 shadow-2xl"
             >
-              <div className="text-2xl sm:text-3xl font-bold mb-2 text-green-400">{stat.value}</div>
-              <div className="text-gray-300 text-xs sm:text-sm">{stat.label}</div>
+              <div className="text-3xl sm:text-4xl font-black mb-2 text-white tracking-tighter">{stat.value}</div>
+              <div className="text-white/40 text-[10px] font-black uppercase tracking-widest">{stat.label}</div>
             </motion.div>
           ))}
         </motion.div>
@@ -205,37 +203,23 @@ export default function GitHub() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 mb-12 sm:mb-16"
+          className="flex flex-col sm:flex-row justify-center gap-6 mb-16 sm:mb-24"
         >
           <motion.a
             href="https://github.com/DEVASANJAY001"
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center justify-center gap-3 bg-gray-800/50 border border-gray-700 rounded-lg px-4 sm:px-6 py-3 hover:bg-gray-700/50 transition-all duration-300"
+            whileHover={{ y: -5 }}
+            className="glass flex items-center justify-center gap-4 rounded-2xl px-8 py-4 border-white/5 hover:border-white/20 transition-all group"
           >
-            <Github size={18} />
-            <span className="text-sm sm:text-base">@DEVASANJAY001 (225+ repos)</span>
-            <ExternalLink size={14} className="text-gray-400" />
-          </motion.a>
-
-          <motion.a
-            href="https://leetcode.com/u/devasanjay/"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center justify-center gap-3 bg-orange-800/50 border border-orange-700 rounded-lg px-4 sm:px-6 py-3 hover:bg-orange-700/50 transition-all duration-300"
-          >
-            <span className="text-base">⚡</span>
-            <span className="text-sm sm:text-base">LeetCode Profile</span>
-            <ExternalLink size={14} className="text-gray-400" />
+            <Github size={20} className="text-white/60 group-hover:text-white transition-colors" />
+            <span className="text-sm font-black text-white/60 uppercase tracking-widest group-hover:text-white">@DEVASANJAY001</span>
+            <ExternalLink size={14} className="text-white/20 group-hover:text-white" />
           </motion.a>
         </motion.div>
 
         {/* Pinned Repositories */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-10 mb-16 sm:mb-24">
           {repositories.map((repo, index) => (
             <motion.div
               key={repo.name}
@@ -243,13 +227,15 @@ export default function GitHub() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.05 }}
-              className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-6 hover:bg-white/10 transition-all duration-300"
+              whileHover={{ y: -12 }}
+              className="group glass p-8 rounded-[2.5rem] border-white/5 transition-all duration-500 hover:shadow-[0_20px_60px_rgba(255,255,255,0.05)] shadow-black shadow-none"
             >
-              <div className="flex items-start justify-between mb-3 sm:mb-4">
-                <div className="flex items-center gap-2">
-                  <Github size={18} className="text-gray-400" />
-                  <h3 className="font-semibold group-hover:text-blue-400 transition-colors text-sm sm:text-base">
+              <div className="flex items-start justify-between mb-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-500">
+                    <Github size={24} className="text-black" />
+                  </div>
+                  <h3 className="text-xl font-black text-white tracking-tighter group-hover:text-white transition-colors">
                     {repo.name}
                   </h3>
                 </div>
@@ -259,26 +245,26 @@ export default function GitHub() {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-white/20 hover:text-white transition-colors p-2"
                 >
-                  <ExternalLink size={14} />
+                  <ExternalLink size={18} />
                 </motion.a>
               </div>
 
-              <p className="text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2">{repo.description}</p>
+              <p className="text-white/40 text-sm mb-6 line-clamp-2 font-light leading-relaxed">{repo.description}</p>
 
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3 sm:gap-4 text-xs sm:text-sm text-gray-400">
-                  <div className="flex items-center gap-1">
-                    <div className="w-2 h-2 sm:w-3 sm:h-3 bg-blue-500 rounded-full"></div>
+              <div className="flex items-center justify-between pt-6 border-t border-white/5">
+                <div className="flex items-center gap-4 text-[10px] font-black uppercase tracking-widest text-white/40">
+                  <div className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
                     <span>{repo.language}</span>
                   </div>
-                  <div className="flex items-center gap-1">
-                    <Star size={12} />
+                  <div className="flex items-center gap-1.5">
+                    <Star size={12} className="group-hover:text-white transition-colors" />
                     <span>{repo.stars}</span>
                   </div>
-                  <div className="flex items-center gap-1">
-                    <GitFork size={12} />
+                  <div className="flex items-center gap-1.5">
+                    <GitFork size={12} className="group-hover:text-white transition-colors" />
                     <span>{repo.forks}</span>
                   </div>
                 </div>
@@ -289,32 +275,34 @@ export default function GitHub() {
 
         {/* Contribution Graph */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, scale: 0.98 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 sm:p-8"
+          className="glass p-12 sm:p-16 rounded-[3.5rem] border-white/5 shadow-2xl"
         >
-          <h3 className="text-xl sm:text-2xl font-semibold mb-6 sm:mb-8 text-center">Contribution Activity</h3>
+          <h3 className="text-2xl sm:text-3xl font-black mb-12 text-center text-white uppercase tracking-tighter">Contribution Activity</h3>
 
           {/* Contribution Calendar */}
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto pb-4">
             <div className="min-w-[800px] mx-auto">
-              {/* Calendar Grid - No labels */}
               <div className="flex justify-center">
-                {/* Contribution squares */}
-                <div className="flex gap-1">
+                <div className="flex gap-1.5">
                   {weeks.map((week, weekIndex) => (
-                    <div key={weekIndex} className="flex flex-col gap-1">
+                    <div key={weekIndex} className="flex flex-col gap-1.5">
                       {week.map((day, dayIndex) => (
                         <motion.div
                           key={`${weekIndex}-${dayIndex}`}
-                          initial={{ opacity: 0, scale: 0 }}
+                          initial={{ opacity: 0, scale: 0.5 }}
                           whileInView={{ opacity: 1, scale: 1 }}
-                          transition={{ duration: 0.2, delay: weekIndex * 0.005 }}
+                          transition={{ duration: 0.3, delay: weekIndex * 0.002 }}
                           viewport={{ once: true }}
-                          whileHover={{ scale: 1.2 }}
-                          className={`w-[11px] h-[11px] rounded-sm cursor-pointer transition-all duration-200 ${getContributionColor(day.level)}`}
+                          whileHover={{ scale: 1.4, zIndex: 10 }}
+                          className={`w-[13px] h-[13px] rounded-[3px] cursor-pointer transition-all duration-300 ${day.level === 0 ? "bg-white/5" :
+                            day.level === 1 ? "bg-white/20" :
+                              day.level === 2 ? "bg-white/40" :
+                                day.level === 3 ? "bg-white/70" : "bg-white"
+                            }`}
                           title={`${day.contributions} contributions on ${day.date.toLocaleDateString()}`}
                         />
                       ))}
@@ -326,19 +314,19 @@ export default function GitHub() {
           </div>
 
           {/* Legend and Stats */}
-          <div className="flex flex-col sm:flex-row items-center justify-between mt-6 gap-4">
-            <p className="text-gray-400 text-sm">
-              <span className="font-semibold text-green-400">150+</span> contributions
+          <div className="flex flex-col sm:flex-row items-center justify-between mt-12 gap-8 border-t border-white/5 pt-10">
+            <p className="text-white font-black uppercase tracking-widest text-sm">
+              <span className="text-white/40">Total activity:</span> <span className="text-white">1,500+</span> <span className="text-white/40">Units</span>
             </p>
 
-            <div className="flex items-center gap-2 text-xs text-gray-400">
+            <div className="flex items-center gap-4 text-[10px] font-black uppercase tracking-widest text-white/40">
               <span>Less</span>
-              <div className="flex gap-1">
-                <div className="w-3 h-3 bg-gray-800 rounded-sm"></div>
-                <div className="w-3 h-3 bg-green-600 rounded-sm"></div>
-                <div className="w-3 h-3 bg-green-500 rounded-sm"></div>
-                <div className="w-3 h-3 bg-green-400 rounded-sm"></div>
-                <div className="w-3 h-3 bg-green-300 rounded-sm"></div>
+              <div className="flex gap-1.5">
+                <div className="w-3 h-3 bg-white/5 rounded-[2px]"></div>
+                <div className="w-3 h-3 bg-white/20 rounded-[2px]"></div>
+                <div className="w-3 h-3 bg-white/40 rounded-[2px]"></div>
+                <div className="w-3 h-3 bg-white/70 rounded-[2px]"></div>
+                <div className="w-3 h-3 bg-white rounded-[2px]"></div>
               </div>
               <span>More</span>
             </div>

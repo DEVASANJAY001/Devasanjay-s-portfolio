@@ -3,6 +3,8 @@
 import { motion } from "framer-motion"
 import { ExternalLink } from "lucide-react"
 import { useState } from "react"
+import { Button } from "@/components/ui/neon-button"
+import { GlowingEffect } from "@/components/ui/glowing-effect"
 
 const projects = [
   {
@@ -107,39 +109,40 @@ export default function Projects() {
         : projects.filter((p) => !p.featured)
 
   return (
-    <section id="projects" className="py-12 sm:py-16 lg:py-20">
+    <section id="projects" className="py-24 sm:py-32 bg-transparent relative z-10">
       <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-12 sm:mb-16"
+          className="text-center mb-16 sm:mb-24"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-            Featured Projects
+          <h2 className="text-4xl sm:text-5xl lg:text-7xl font-black mb-6 bg-gradient-to-r from-white to-gray-500 bg-clip-text text-transparent uppercase tracking-tighter">
+            Selected Works
           </h2>
-          <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto px-4">
-            Here are some of my recent projects that showcase my skills and passion for development.
+          <div className="w-24 h-1 bg-white mx-auto rounded-full mb-8" />
+          <p className="text-white/50 text-xl font-light max-w-2xl mx-auto px-4 tracking-tight">
+            A collection of digital experiences crafted with precision and purpose.
           </p>
         </motion.div>
 
         {/* Filter Buttons */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="flex justify-center mb-10 sm:mb-16"
+          className="flex justify-center mb-16 sm:mb-24"
         >
-          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-1.5 flex gap-1">
+          <div className="glass p-2 rounded-[2rem] flex gap-1 border-white/5">
             {["all", "featured", "others"].map((filterType) => (
               <button
                 key={filterType}
                 onClick={() => setFilter(filterType)}
-                className={`px-5 sm:px-8 py-2.5 rounded-xl transition-all duration-500 capitalize text-sm sm:text-base font-semibold ${filter === filterType
-                    ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg"
-                    : "text-gray-400 hover:text-white hover:bg-white/5"
+                className={`px-8 sm:px-12 py-3.5 rounded-[1.5rem] transition-all duration-500 capitalize text-sm sm:text-base font-bold tracking-tight ${filter === filterType
+                  ? "bg-white text-black shadow-2xl"
+                  : "text-white/40 hover:text-white hover:bg-white/5"
                   }`}
               >
                 {filterType}
@@ -149,7 +152,7 @@ export default function Projects() {
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12">
           {filteredProjects.map((project, index) => (
             <motion.div
               key={project.title}
@@ -157,71 +160,85 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.05 }}
               viewport={{ once: true }}
-              whileHover={{ y: -8 }}
-              className="group bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl overflow-hidden hover:bg-white/10 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/10"
+              whileHover={{ y: -12 }}
+              className="group list-none"
             >
-              {/* Project Image */}
-              <div className="relative overflow-hidden aspect-video">
-                <img
-                  src={project.image || "/placeholder.svg"}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              <div className="relative h-full rounded-[3rem] border border-white/5 p-2 transition-all duration-500 hover:shadow-[0_20px_60px_rgba(255,255,255,0.05)]">
+                <GlowingEffect
+                  spread={40}
+                  glow={true}
+                  disabled={false}
+                  proximity={64}
+                  inactiveZone={0.01}
+                  borderWidth={2}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500"></div>
+                <div className="relative h-full flex flex-col glass rounded-[2.5rem] overflow-hidden bg-background/50">
+                  {/* Project Image */}
+                  <div className="relative overflow-hidden aspect-[4/3]">
+                    <img
+                      src={project.image || "/placeholder.svg"}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+                    />
+                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500" />
 
-                {/* Project Links Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
-                  <motion.a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="p-4 bg-white/10 backdrop-blur-xl rounded-full border border-white/20 hover:bg-white/20 transition-colors text-white shadow-xl"
-                  >
-                    <ExternalLink size={22} />
-                  </motion.a>
-                </div>
+                    {/* Project Links Overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-8 group-hover:translate-y-0">
+                      <motion.a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        className="p-6 bg-white text-black rounded-full shadow-2xl"
+                      >
+                        <ExternalLink size={24} />
+                      </motion.a>
+                    </div>
 
-                {project.featured && (
-                  <div className="absolute top-4 right-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-[10px] sm:text-xs font-bold px-3 py-1.5 rounded-full shadow-lg border border-white/10 tracking-wider">
-                    FEATURED
+                    {project.featured && (
+                      <div className="absolute top-6 right-6 bg-white text-black text-[10px] font-black px-4 py-2 rounded-full shadow-2xl tracking-widest uppercase">
+                        Featured
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
 
-              {/* Project Content */}
-              <div className="p-6 sm:p-8">
-                <h3 className="text-xl sm:text-2xl font-bold mb-3 group-hover:text-cyan-400 transition-colors duration-300">
-                  {project.title}
-                </h3>
-                <p className="text-gray-400 text-sm sm:text-base mb-6 line-clamp-2 leading-relaxed">{project.description}</p>
+                  {/* Project Content */}
+                  <div className="p-8 sm:p-10">
+                    <h3 className="text-2xl sm:text-3xl font-black mb-4 text-white tracking-tighter">
+                      {project.title}
+                    </h3>
+                    <p className="text-white/50 text-base mb-8 line-clamp-2 leading-relaxed font-light">{project.description}</p>
 
-                {/* Technologies */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.technologies.slice(0, 3).map((tech) => (
-                    <span key={tech} className="text-[10px] sm:text-xs font-medium bg-white/5 text-gray-300 px-3 py-1.5 rounded-lg border border-white/5 group-hover:border-white/10 transition-colors">
-                      {tech}
-                    </span>
-                  ))}
-                  {project.technologies.length > 3 && (
-                    <span className="text-[10px] sm:text-xs font-medium bg-white/5 text-gray-400 px-3 py-1.5 rounded-lg">
-                      +{project.technologies.length - 3}
-                    </span>
-                  )}
-                </div>
+                    {/* Technologies */}
+                    <div className="flex flex-wrap gap-2 mb-8">
+                      {project.technologies.slice(0, 3).map((tech) => (
+                        <span key={tech} className="text-[10px] font-bold bg-white/5 text-white/40 px-4 py-2 rounded-xl border border-white/5 group-hover:text-white group-hover:border-white/20 transition-all uppercase tracking-widest">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
 
-                {/* Project Links */}
-                <div className="flex gap-6 pt-2 border-t border-white/5">
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm font-semibold text-gray-400 hover:text-cyan-400 transition-colors group/link"
-                  >
-                    <ExternalLink size={16} className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
-                    Visit Project
-                  </a>
+                    {/* Project Links */}
+                    <div className="flex gap-6 pt-4 border-t border-white/5">
+                      <Button
+                        asChild
+                        variant="ghost"
+                        size="sm"
+                        className="flex items-center gap-2 p-0 h-auto hover:bg-transparent"
+                      >
+                        <a
+                          href={project.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="uppercase tracking-widest text-[10px] sm:text-xs font-black text-white/40 hover:text-white transition-all group/link"
+                        >
+                          <ExternalLink size={14} className="transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
+                          Launch Project
+                        </a>
+                      </Button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>

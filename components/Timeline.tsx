@@ -44,53 +44,54 @@ const timelineData = [
 
 export default function Timeline() {
   return (
-    <section id="timeline" className="py-20">
-      <div className="container mx-auto px-6">
+    <section id="timeline" className="py-24 sm:py-32 bg-transparent relative z-10">
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-16 sm:mb-24"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-            Experience & Education
+          <h2 className="text-4xl sm:text-5xl lg:text-7xl font-black mb-6 bg-gradient-to-r from-white to-gray-500 bg-clip-text text-transparent uppercase tracking-tighter">
+            Journey
           </h2>
+          <div className="w-24 h-1 bg-white mx-auto rounded-full" />
         </motion.div>
 
-        <div className="relative">
+        <div className="relative max-w-5xl mx-auto">
           {/* Timeline Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-blue-500 to-purple-500 rounded-full"></div>
+          <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 w-px h-full bg-gradient-to-b from-white/20 via-white/5 to-transparent"></div>
 
           {timelineData.map((item, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className={`relative flex items-center mb-12 ${index % 2 === 0 ? "flex-row" : "flex-row-reverse"}`}
+              className={`relative flex items-center mb-20 md:mb-32 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
             >
               {/* Content */}
-              <div className={`w-5/12 ${index % 2 === 0 ? "text-right pr-8" : "text-left pl-8"}`}>
+              <div className={`w-full md:w-5/12 pl-20 md:pl-0 ${index % 2 === 0 ? "md:text-right md:pr-16" : "md:text-left md:pl-16"}`}>
                 <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-6 hover:bg-white/10 transition-all duration-300"
+                  whileHover={{ y: -8 }}
+                  className="glass p-8 sm:p-10 rounded-[2.5rem] border-white/5 transition-all duration-500 hover:shadow-2xl shadow-black shadow-none group"
                 >
-                  <div className="text-blue-400 font-bold text-lg mb-2">{item.year}</div>
-                  <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                  <div className="text-purple-400 font-medium mb-3">{item.company}</div>
-                  <p className="text-gray-300 text-sm">{item.description}</p>
+                  <div className="text-white/40 font-black text-xs sm:text-sm mb-4 uppercase tracking-widest">{item.year}</div>
+                  <h3 className="text-xl sm:text-2xl font-bold mb-3 text-white tracking-tight group-hover:text-white transition-colors">{item.title}</h3>
+                  <div className="text-white/60 font-bold mb-4 uppercase tracking-tighter text-sm">{item.company}</div>
+                  <p className="text-white/40 text-sm leading-relaxed font-light">{item.description}</p>
                 </motion.div>
               </div>
 
               {/* Icon */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center border-4 border-slate-900">
-                <item.icon size={20} className="text-white" />
+              <div className="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-16 h-16 bg-white rounded-2xl flex items-center justify-center border-4 border-black shadow-2xl z-10">
+                <item.icon size={28} className="text-black" />
               </div>
 
-              {/* Spacer */}
-              <div className="w-5/12"></div>
+              {/* Spacer for desktop */}
+              <div className="hidden md:block md:w-5/12"></div>
             </motion.div>
           ))}
         </div>

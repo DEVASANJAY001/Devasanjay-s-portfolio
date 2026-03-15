@@ -3,6 +3,8 @@
 import { motion } from "framer-motion"
 import { ArrowDown, Download, Mail } from "lucide-react"
 import { useEffect, useState } from "react"
+import { Button } from "@/components/ui/neon-button"
+import { HoverBorderGradient } from "@/components/ui/hover-border-gradient"
 
 export default function Hero() {
   const [text, setText] = useState("")
@@ -22,18 +24,14 @@ export default function Hero() {
   }, [])
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 sm:px-6 bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950">
-      {/* Galaxy background with nebula */}
-      <div className="absolute inset-0 nebula-glow opacity-60"></div>
-
-      {/* Cosmic gradient orbs */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-48 h-48 sm:w-96 sm:h-96 bg-purple-600/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-cyan-500/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }}></div>
-      </div>
-
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 sm:px-6 bg-transparent">
       <div className="container mx-auto text-center relative z-10 max-w-4xl pt-20">
-        <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1 }}>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1 }}
+          className="glass p-8 sm:p-16 rounded-[2.5rem] border-white/5 shadow-2xl"
+        >
           <motion.h1
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-4 sm:mb-8 leading-tight tracking-tight text-white"
             initial={{ opacity: 0, y: 30 }}
@@ -41,7 +39,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             I'm{" "}
-            <span className="bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-white via-gray-400 to-gray-600 bg-clip-text text-transparent">
               Deva Sanjay
             </span>{" "}
             <motion.span
@@ -63,7 +61,7 @@ export default function Hero() {
             <motion.span
               animate={{ opacity: [1, 0, 1] }}
               transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY }}
-              className="inline-block w-0.5 h-[1.1em] bg-cyan-400 ml-1 align-middle"
+              className="inline-block w-0.5 h-[1.1em] bg-white ml-1 align-middle"
             />
           </motion.div>
 
@@ -73,25 +71,28 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2 }}
           >
-            <motion.a
-              href="https://drive.google.com/file/d/1hSaidr_c8uo-nfdnB_OAEZqlzxxIot7u/view?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05, y: -2, boxShadow: "0 15px 30px rgba(168, 85, 247, 0.4)" }}
-              whileTap={{ scale: 0.95 }}
-              className="w-full sm:w-auto px-10 py-4 bg-gradient-to-r from-purple-600 to-cyan-500 rounded-2xl font-bold flex items-center justify-center gap-3 hover:shadow-2xl transition-all duration-300 text-base text-white"
+            <Button
+              asChild
+              variant="solid"
+              size="lg"
+              className="w-full sm:w-auto"
             >
-              View Resume
-            </motion.a>
+              <a
+                href="https://drive.google.com/file/d/1hSaidr_c8uo-nfdnB_OAEZqlzxxIot7u/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Resume
+              </a>
+            </Button>
 
-            <motion.a
+            <HoverBorderGradient
+              as="a"
               href="#contact"
-              whileHover={{ scale: 1.05, y: -2, backgroundColor: "rgba(168, 85, 247, 0.1)" }}
-              whileTap={{ scale: 0.95 }}
-              className="w-full sm:w-auto px-10 py-4 border-2 border-white/10 rounded-2xl font-bold hover:border-purple-500/50 backdrop-blur-sm transition-all duration-300 flex items-center justify-center gap-3 text-base text-white"
+              className="w-full sm:w-auto"
             >
               Hire Me
-            </motion.a>
+            </HoverBorderGradient>
           </motion.div>
         </motion.div>
 
