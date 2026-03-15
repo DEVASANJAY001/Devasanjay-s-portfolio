@@ -7,7 +7,7 @@ const timelineData = [
   {
     year: "Jan 2026",
     title: "AI and Computational Intelligence Engineer",
-    company: "Stellantis",
+    company: "intern@Stellantis",
     description:
       "Currently working as an AI and Computational Intelligence Engineer, developing AI-powered solutions and computational systems.",
     icon: Briefcase,
