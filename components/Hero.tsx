@@ -8,7 +8,7 @@ import { HoverBorderGradient } from "@/components/ui/hover-border-gradient"
 
 export default function Hero() {
   const [text, setText] = useState("")
-  const fullText = "Full Stack Developer | AI Engineer @ Stellantis"
+  const fullText = "Full Stack Developer | AI Engineer Intern @ Stellantis"
 
   useEffect(() => {
     let index = 0
