@@ -61,17 +61,17 @@ const DefaultArticleItems: ArticleItem[] = [
 /** Stacked top offset when collapsed (cards peek behind each other) */
 const COLLAPSED_OFFSETS = [
     'top-6',
-    'top-[calc(1.5rem+0.75rem)]',
-    'top-[calc(1.5rem+1.5rem)]',
-    'top-[calc(1.5rem+2.25rem)]',
+    'top-[calc(1.5rem_+_0.75rem)]',
+    'top-[calc(1.5rem_+_1.5rem)]',
+    'top-[calc(1.5rem_+_2.25rem)]',
 ]
 
 /** Spread top offset when expanded */
 const EXPANDED_OFFSETS = [
     'top-6',
-    'top-[calc(1.5rem+112px+1rem)]',
-    'top-[calc(1.5rem+224px+2rem)]',
-    'top-[calc(1.5rem+336px+3rem)]',
+    'top-[calc(1.5rem_+_112px_+_1rem)]',
+    'top-[calc(1.5rem_+_224px_+_2rem)]',
+    'top-[calc(1.5rem_+_336px_+_3rem)]',
 ]
 
 interface StackedArticleCardsProps {
@@ -141,7 +141,7 @@ export default function StackedArticleCards({
             {/* Show less toggle */}
             <div
                 className={cn(
-                    'absolute top-[calc(1.5rem+448px+4rem)] left-1/2 -translate-x-1/2 transition-all duration-300 ease-in-out',
+                    'absolute top-[calc(1.5rem_+_448px_+_4rem)] left-1/2 -translate-x-1/2 transition-all duration-300 ease-in-out',
                     isActive
                         ? 'pointer-events-auto visible opacity-100'
                         : 'pointer-events-none invisible opacity-0'
