@@ -15,10 +15,10 @@ const timelineData = [
   },
   {
     year: "2024",
-    title: "Founder & CEO",
+    title: "Full Stack AI Development",
     company: "DAVNS INDUSTRIES",
     description:
-      "Co-founded DAVNS, an AI-powered technology startup focused on innovative solutions. Led product strategy, prototyping, and early-stage UX/UI design.",
+      "An AI-powered technology startup focused on innovative solutions. Led product strategy, prototyping, and early-stage UX/UI design.",
     icon: Briefcase,
     type: "work",
   },
