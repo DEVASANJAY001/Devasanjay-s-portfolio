@@ -15,7 +15,7 @@ const timelineData = [
   },
   {
     year: "2024",
-    title: "Full Stack AI Development",
+    title: "Full Stack AI Engineer",
     company: "DAVNS INDUSTRIES",
     description:
       "An AI-powered technology startup focused on innovative solutions. Led product strategy, prototyping, and early-stage UX/UI design.",
